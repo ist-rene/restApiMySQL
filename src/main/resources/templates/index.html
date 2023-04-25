@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Spring Data REST</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+
+    <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style type="text/css">
+    .align{
+        text-align:center;
+    }
+    .align-l{
+        text-align:left;
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+<div class="align"><h1>REST API Project</h1></div>
+<div class="align">
+    <div class="align-l">
+
+        <form id="getForm" action="">
+            Student_Id: <input type="text" id="getId" name="id">
+            <button id="get" type="button" >GET</button>
+            <br>
+        </form>
+
+        <form id="putForm" action="">
+            <div>
+            Student_Id: <input type="text" id="putId" name="id"> <br>
+            Subject:    <input type="text" id="putSubject" name="subject">
+            <button id="put" type="button">PUT</button>
+            <br>
+            </div>
+        </form>
+
+        <form id="deleteForm" action="">
+            Student_Id: <input type="text" name="id">
+            <button id="delete" type="button">DELETE</button>
+            <br>
+        </form>
+    </div>
+</div>
+
+<script>
+(function() {
+    document.getElementById('get').onclick= function() {
+        var id = document.getElementById('getId').value;
+        const url = "/students/";
+        axios.get(url+ id).then(data=>console.log(data))
+        .then(data => console.log(data))
+        .catch(err=> console.log(err));
+    }
+     document.getElementById('put').onclick= function() {
+        var id = document.getElementById('putId').value;
+        var subject = document.getElementById('putSubject').value;
+
+        const url ="/students/changedata/";
+        axios.post(url+id, subject)
+        .then(data => console.log(data))
+        .catch(err=>console.log(err));
+    }
+})();
+
+
+
+</script>
+
+
+</body>
